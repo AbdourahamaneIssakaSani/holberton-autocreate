@@ -1,6 +1,4 @@
-# holberton-autocreate-train
-
-# holberton-autocreate-train
+# holberton autocreate
 
 ## Requirements
 
