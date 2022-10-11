@@ -19,6 +19,18 @@ After the installation process, type the following command:
 ha
 ```
 
+If you face permission denied error, run one of these commands and retry
+
+```sh
+source ~/.profile
+```
+
+or
+
+```sh
+source ~/.bashrc
+```
+
 ## Usage
 
 1. push your file to GitHub
