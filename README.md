@@ -157,7 +157,7 @@ source ~/.bashrc
 
 ## To uninstall
 
-If you want to remove all commands of Holberton autocreate, you can remove the files `ha`, `pu`, `js`, `py`, `sh`, `vh` located in `~/bin` directory and type
+If you want to remove all commands of Holberton autocreate, you can remove the files `ha`, `pu`, `js`, `py`, `sh`, `vh` located in `~/bin` AND `/usr/local/bin` directories and type
 in your terminal
 
 ```sh
