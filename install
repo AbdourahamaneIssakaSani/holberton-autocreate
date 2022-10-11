@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+if [ ! -d "$HOME/bin" ]; then
+    mkdir -vp ~/bin
+fi
+
+cp -v ./{ha,js,pu,py,sh,vh} ~/bin
+sudo cp -v ./{ha,js,pu,py,sh,vh} /usr/local/bin
+
+source ~/.profile
+
+files=("ha" "js" "pu" "py" "sh" "vh")
+status=1
+for file in ${files[@]}; do
+    if [ ! -f "$HOME/bin/$file" ]; then
+        echo "failed to add $file in your system. Contact the author"
+        $status=0
+    fi
+done
+
+if [ $status -eq 1 ]; then
+    echo "Holberton autocreate commands added succesfully !"
+    exit 0
+else
+    echo "Failed to add all Holberton autocreate commands !"
+    echo "Contact the author for support"
+    exit 2
+fi
+
+git clone https://github.com/AbdourahamaneIssakaSani/holberton-autocreate-train.git && cd holberton-autocreate-train && ./install

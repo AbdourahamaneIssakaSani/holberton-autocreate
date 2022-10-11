@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+files=("ha" "js" "pu" "py" "sh" "vh")
+status=1
+for file in ${files[@]}; do
+    rm -v "$HOME/bin/$file"
+    sudo rm -v "/usr/local/bin/$file"
+done
+
+source ~/.profile
+echo "Holberton autocreate commands removed !"
+exit 0

@@ -1,0 +1,147 @@
+#!/usr/bin/env bash
+
+# pu test.txt
+# pu -m "test files"  --- all files pushed
+# pu                  --- push all with default message
+# pu test.txt text1.txt --- push many files with default message
+# pu test.txt text1.txt -m "mutiples files"
+# echo "\tpu [ -h | --help ] [ -m | --message ] <files>"
+
+help() {
+    echo "NAME"
+    echo -e "\t pu - add commit and push your files to github "
+    echo
+    echo "SYNOPSIS"
+    echo -e "\t  pu [OPTION]... [FILE]..."
+    echo
+    echo "DESCRIPTION"
+    echo -e "\tpu command helps you to add, commit and push your files to gihub, making the assesments much faster to finish." | fmt -u -w 100
+    echo
+    echo "OPTIONS"
+    echo -e "\t-m, --message=MESSAGE"
+    echo -e "\t\t use a commit message instead of the default one."
+    echo -e "\t-h, --help"
+    echo -e "\t\t display this help screen"
+    echo
+    echo -e "\tExit status:"
+    echo -e "\t\t0\tif OK"
+    echo -e "\t\t2\tif invalid option or syntax"
+    echo
+    echo "AUTHOR"
+    echo -e "\tWritten by Abdourahamane (Abissa) Issaka Sani"
+    echo -e "\tSoftware Engineering Student,"
+    echo -e "\tAfrican Leadership University - Rwanda"
+    echo
+    echo -e "\t\tOctober 2022"
+    exit 0
+}
+
+invalid_option() {
+    echo "invalid option"
+    echo "Try 'pu -h' for more information."
+    exit 2
+}
+
+process_options() {
+    ARGUMENTS=$(getopt -a -n pu --options hm: --longoptions help,message: -- "$@")
+
+    eval set -- "$ARGUMENTS"
+
+    while :; do
+        case "$1" in
+        -m | --message)
+            commit="$2"
+            echo $commit
+            shift 2
+            ;;
+        -h | --help)
+            help
+            shift 2
+            break
+            ;;
+        --)
+            shift
+            break
+            ;;
+        \?)
+            invalid_option
+            exit 2
+            ;;
+        esac
+    done
+}
+
+# check if changes have been made
+check_changes() {
+    if [ $(git status --porcelain | wc -l) -eq 0 ]; then
+        echo "You have made NO change"
+        exit 2
+    fi
+}
+
+pull_push() {
+    git pull
+    git push
+}
+
+# case of no arguemnts AND options
+if [ $# -eq 0 ]; then
+    # check if changes have been made
+    check_changes
+    git add .
+    git commit -m ":robot: automated commit of one or many files"
+    pull_push
+else
+    ARGUMENTS=$(getopt -n pu --options hm: --longoptions help,message: -- "$@")
+
+    eval set -- "$ARGUMENTS"
+
+    while :; do
+        case "$1" in
+        -h | --help)
+            help
+            break
+            ;;
+        -m | --message)
+            custom_commit_message="$2"
+            shift 2
+            ;;
+        --)
+            shift
+            break
+            ;;
+        \?)
+            invalid_option
+            exit 2
+            ;;
+        esac
+    done
+
+    check_changes
+
+    if [ "$custom_commit_message" ]; then
+        if [ $# -eq 0 ]; then
+            git add .
+            git commit -m "$custom_commit_message"
+        else
+            for FILE in "$@"; do
+                if [ ! -f $FILE ]; then
+                    echo "$FILE is not a file"
+                else
+                    git add $FILE
+                fi
+            done
+            git commit -m "$custom_commit_message"
+        fi
+    else
+        for FILE in "$@"; do
+            if [ ! -f $FILE ]; then
+                echo "$FILE is not a file"
+            else
+                git add $FILE
+                git commit -m ":robot: automated commit of $FILE"
+            fi
+        done
+    fi
+    pull_push
+fi
