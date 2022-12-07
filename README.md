@@ -7,6 +7,17 @@
 
 ## Installation
 
+- If you are already an existing user (v1.0.0), please remove the `sh` file like this:
+
+```sh
+rm -v "$HOME/bin/sh"
+sudo rm -v "/usr/local/bin/sh"
+```
+
+This will resolve the conflicts you may have with `dash` in shell. Then kindly follow the unistall section before continuing.
+
+- To install as new user or existing user for v1.0.0 (who followed the instructions above):
+
 ```sh
 git clone https://github.com/AbdourahamaneIssakaSani/holberton-autocreate.git && cd holberton-autocreate && ./install
 ```
@@ -113,24 +124,24 @@ source ~/.bashrc
 
 4. Create a bash file
 
-   To create a bash file with `execute rights` and starting with `#!/bin/bash`, use the `sh` command. Type `sh -h` to know more. Find examples below:
+   To create a bash file with `execute rights` and starting with `#!/bin/bash`, use the `mh` command. Type `mh -h` to know more. Find examples below:
 
    - to create the file named `0-current_working_directory`
 
    ```sh
-   sh 0-current_working_directory
+   mh 0-current_working_directory
    ```
 
    - to create the file named `0-current_working_directory` and open it in insert mode, use `-o` option (only for on file)
 
    ```sh
-   sh -o 0-current_working_directory
+   mh -o 0-current_working_directory
    ```
 
    - to create the files named `0-current_working_directory` and `1-listit` (as many files as you want)
 
    ```sh
-   sh 0-current_working_directory 1-listit
+   mh 0-current_working_directory 1-listit
    ```
 
 5. Create an env bash file
@@ -140,24 +151,24 @@ source ~/.bashrc
    - to create the file named `1-for_best_school`
 
    ```sh
-   sh 1-for_best_school
+   mh 1-for_best_school
    ```
 
    - to create the file named `1-for_best_school` and open it in insert mode, use `-o` option (only for on file)
 
    ```sh
-   sh -o 1-for_best_school
+   mh -o 1-for_best_school
    ```
 
    - to create the files named `1-for_best_school` and `2-while_best_school` (as many files as you want)
 
    ```sh
-   sh 1-for_best_school 2-while_best_school
+   mh 1-for_best_school 2-while_best_school
    ```
 
 ## To uninstall
 
-If you want to remove all commands of Holberton autocreate, you can remove the files `ha`, `pu`, `js`, `py`, `sh`, `vh` located in `~/bin` AND `/usr/local/bin` directories and type
+If you want to remove all commands of Holberton autocreate, you can remove the files `ha`, `pu`, `js`, `py`, `mh`, `vh` located in `~/bin` AND `/usr/local/bin` directories and type
 in your terminal
 
 ```sh
