@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
 
-# sh index.js
-# sh index.js file.js
-# sh -o index.js --- only one file
-# sh -h
+# mh index.js
+# mh index.js file.js
+# mh -o index.js --- only one file
+# mh -h
 
 help() {
     echo "NAME"
-    echo -e "\tsh - creates a javascript file according to holberton requirements "
+    echo -e "\tmh - creates a javascript file according to holberton requirements "
     echo
     echo "SYNOPSIS"
-    echo -e "\tsh [OPTION]... [FILENAME]..."
+    echo -e "\tmh [OPTION]... [FILENAME]..."
     echo
     echo "DESCRIPTION"
-    echo -e "\tsh command helps you to create your javascript file with the required shebang and execute rights." | fmt -u -w 100
+    echo -e "\tmh command helps you to create your javascript file with the required shebang and execute rights." | fmt -u -w 100
     echo
     echo "OPTIONS"
     echo -e "\t-o, --open=FILE"
@@ -37,9 +37,9 @@ help() {
 # case of no arguments AND options
 if [ $# -eq 0 ]; then
     echo "invalid usage"
-    echo "Try 'sh -h' for more information."
+    echo "Try 'mh -h' for more information."
 else
-    ARGUMENTS=$(getopt -n sh --options ho: --longoptions help,open -- "$@")
+    ARGUMENTS=$(getopt -n mh --options ho: --longoptions help,open -- "$@")
     eval set -- "$ARGUMENTS"
 
     while :; do

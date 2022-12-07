@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-files=("ha" "js" "pu" "py" "sh" "vh")
+files=("ha" "js" "pu" "py" "mh" "vh")
 status=1
 for file in ${files[@]}; do
     rm -v "$HOME/bin/$file"
