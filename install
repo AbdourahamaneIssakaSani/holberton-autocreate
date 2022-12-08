@@ -26,5 +26,3 @@ else
     echo "Contact the author for support"
     exit 2
 fi
-
-git clone https://github.com/AbdourahamaneIssakaSani/holberton-autocreate.git && cd holberton-autocreate && ./install
