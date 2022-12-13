@@ -4,12 +4,12 @@ if [ ! -d "$HOME/bin" ]; then
     mkdir -vp ~/bin
 fi
 
-cp -v ./{ha,js,pu,py,sh,vh} ~/bin
-sudo cp -v ./{ha,js,pu,py,sh,vh} /usr/local/bin
+cp -v ./{ha,js,pu,py,mh,vh} ~/bin
+sudo cp -v ./{ha,js,pu,py,mh,vh} /usr/local/bin
 
 source ~/.profile
 
-files=("ha" "js" "pu" "py" "sh" "vh")
+files=("ha" "js" "pu" "py" "mh" "vh")
 status=1
 for file in ${files[@]}; do
     if [ ! -f "$HOME/bin/$file" ]; then
@@ -26,5 +26,3 @@ else
     echo "Contact the author for support"
     exit 2
 fi
-
-git clone https://github.com/AbdourahamaneIssakaSani/holberton-autocreate-train.git && cd holberton-autocreate-train && ./install
